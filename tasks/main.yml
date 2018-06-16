@@ -1,11 +1,14 @@
 ---
 - block:
   - name: Include OS-specific variables.
-    include_vars: "{{ lookup('first_found', var_files) }}"
+    include_vars: "{{ lookup('first_found', params) }}"
     vars:
-      var_files:
-        - "{{ ansible_os_family }}{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_os_family }}.yml"
+      params:
+        files:
+          - "{{ ansible_os_family }}{{ ansible_distribution_major_version }}.yml"
+          - "{{ ansible_os_family }}.yml"
+        path:
+          - 'vars'
     tags:
       - postgresql_install
       - postgresql_init
