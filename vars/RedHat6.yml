@@ -1,0 +1,3 @@
+---
+postgresql_package: postgresql-server
+postgresql_init_cmd: service postgresql initdb
