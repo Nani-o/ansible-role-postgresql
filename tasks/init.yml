@@ -1,0 +1,9 @@
+---
+- name: Check that datadir exists
+  stat:
+    path: "/var/lib/pgsql/data/PG_VERSION"
+  register: postgresql_datadir_init_check
+
+- name: Init the db
+  shell: "postgresql-setup initdb"
+  when: not postgresql_datadir_init_check.stat.exists

@@ -2,7 +2,14 @@
 - block:
   - name: Include OS-specific variables.
     include_vars: "{{ ansible_os_family }}.yml"
+    tags:
+      - postgresql
 
   - import_tasks: packages.yml
-  tags:
-    - mono
+    tags:
+      - postgresql
+
+  - import_tasks: init.yml
+    when: "ansible_os_family == 'RedHat'"
+    tags:
+      - postgresql
