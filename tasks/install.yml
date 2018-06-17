@@ -1,6 +1,6 @@
 ---
 - name: Setup repo for version specific install
-  import_tasks: "repositories-{{ ansible_os_family }}.yml"
+  include_tasks: "repositories-{{ ansible_os_family }}.yml"
   when: postgresql_version is defined
 
 - name: Install postgresql
