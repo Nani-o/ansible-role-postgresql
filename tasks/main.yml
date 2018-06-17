@@ -9,10 +9,10 @@
       - postgresql_install
       - postgresql_init
 
-  - import_tasks: install.yml
+  - include_tasks: install.yml
     tags: postgresql_install
 
-  - import_tasks: init.yml
+  - include_tasks: init.yml
     when: "ansible_os_family == 'RedHat'"
     tags: postgresql_init
   tags: postgresql
