@@ -1,7 +1,0 @@
----
-- name: Install postgresql
-  package:
-    name: "{{ postgresql_package }}"
-    state: latest
-  notify:
-    - restart postgresql

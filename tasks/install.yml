@@ -1,0 +1,11 @@
+---
+- name: Setup repo for version specific install
+  import_tasks: "repositories-{{ ansible_os_family }}.yml"
+  when: postgresql_version is defined
+
+- name: Install postgresql
+  package:
+    name: "{{ postgresql_package }}"
+    state: latest
+  notify:
+    - restart postgresql

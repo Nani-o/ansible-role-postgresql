@@ -1,0 +1,8 @@
+---
+- name: Add postgresql {{ postgresql_version }} yum repo
+  yum_repository:
+    name: postgresql
+    baseurl: "{{ postgresql_yum_repo }}"
+    gpgkey: "{{ postgresql_yum_gpgkey }}"
+    description: "{{ postgresql_yum_description }}"
+    state: present

@@ -1,4 +1,9 @@
 ---
-- hosts: container
+- hosts: pg*
+  pre_tasks:
+    - name: Include variables for each container
+      include_vars:
+        dir: "vars"
+        files_matching: "{{ inventory_hostname }}.yml"
   roles:
     - role-to-test

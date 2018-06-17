@@ -1,0 +1,17 @@
+---
+- name: Install gnupg for the apt_key module
+  apt:
+    name: gnupg2
+    update_cache: yes
+    state: latest
+
+- name: Add postgresql apt key
+  apt_key:
+    keyserver: "{{ postgresql_apt_keyserver }}"
+    id: "{{ postgresql_apt_key_id }}"
+    state: present
+
+- name: Add postgresql {{ postgresql_version }} apt repo
+  apt_repository:
+    repo: "{{ postgresql_apt_repo }}"
+    state: present
