@@ -11,7 +11,7 @@
     id: "{{ postgresql_apt_key_id }}"
     state: present
 
-- name: Add postgresql {{ postgresql_version }} apt repo
+- name: Add postgresql apt repo
   apt_repository:
     repo: "{{ postgresql_apt_repo }}"
     state: present

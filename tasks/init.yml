@@ -1,9 +1,18 @@
 ---
-- name: Check that datadir exists
+- name: Check if a db is already installed
   stat:
-    path: "/var/lib/pgsql/data/PG_VERSION"
+    path: "{{ postgresql_datadir }}/PG_VERSION"
   register: postgresql_datadir_init_check
 
-- name: Init the db
-  shell: "{{ postgresql_init_cmd }}"
+- block:
+    - name: Create the datadir
+      file:
+        path: "{{ postgresql_datadir }}
+        owner: "{{ postgresql_user }}"
+        group: "{{ postgresql_group }}"
+        recurse: yes
+        state: directory      
+
+    - name: Init the db
+      shell: "{{ postgresql_init_cmd }} -D {{ postgresql_datadir }}"
   when: not postgresql_datadir_init_check.stat.exists

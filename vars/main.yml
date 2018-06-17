@@ -1,0 +1,5 @@
+---
+postgresql_version_short: "{{ postgresql_version | default('') | replace('.', '') }}"
+postgresql_bin_folder: "/usr/pgsql-{{ postgresql_version_short }}/bin"
+postgresql_datadir: "/var/lib/postgresql/{{ postgresql_version }}/data"
+postgresql_initdb_command: "{{ postgresql_bin_folder }}/initdb"

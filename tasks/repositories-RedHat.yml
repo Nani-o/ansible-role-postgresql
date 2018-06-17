@@ -1,5 +1,5 @@
 ---
-- name: Add postgresql {{ postgresql_version }} yum repo
+- name: Add postgresql yum repo
   yum_repository:
     name: postgresql
     baseurl: "{{ postgresql_yum_repo }}"
