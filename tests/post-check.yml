@@ -1,14 +1,16 @@
 ---
 - hosts: pg*
   tasks:
-    - name: Check for install of a specific version
-      block:
-        - name: Get major psql installed version
-          shell: psql --version | head -1 | awk '{print \$3}' | sed -E 's/^([0-9]*\.)([0-9]*).*/\1\2/g'
-          register: psql_installed_version
+    - name: Get major psql installed version
+      shell: psql --version | head -1 | awk '{print \$3}' | sed -E 's/^([0-9]*\.)([0-9]*).*/\1\2/g'
+      register: psql_installed_version
 
-        - name: Fail if psql installed version doesn't match postgresql_version
-          fail:
+    - name: Show installed version
+      debug:
+        var: psql_installed_version.stdout
+
+    - name: Fail if psql installed version doesn't match postgresql_version
+      fail:
       when:
         - postgresql_version is defined
         - postgresql_version != psql_installed_version.stdout
