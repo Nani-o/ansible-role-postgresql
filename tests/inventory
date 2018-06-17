@@ -1,0 +1,3 @@
+pg-distrib ansible_connection=lxd
+pg-93 ansible_connection=lxd
+pg-10 ansible_connection=lxd
