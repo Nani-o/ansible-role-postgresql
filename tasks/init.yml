@@ -14,5 +14,5 @@
         state: directory      
 
     - name: Init the db
-      shell: "{{ postgresql_init_cmd }} -D {{ postgresql_datadir }}"
+      shell: "{{ postgresql_initdb_command }} -D {{ postgresql_datadir }}"
   when: not postgresql_datadir_init_check.stat.exists
