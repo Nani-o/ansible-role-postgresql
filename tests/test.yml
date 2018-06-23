@@ -1,4 +1,5 @@
 ---
 - hosts: pg*
+  become_method: su
   roles:
     - role-to-test
