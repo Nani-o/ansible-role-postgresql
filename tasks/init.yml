@@ -15,4 +15,6 @@
 
     - name: Init the db
       shell: "{{ postgresql_initdb_command }} -D {{ postgresql_datadir }}"
+      become: yes
+      become_user: "{{ postgresql_user }}"
   when: not postgresql_datadir_init_check.stat.exists
