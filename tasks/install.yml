@@ -16,4 +16,4 @@
     dest: "{{ postgresql_systemd_file }}"
   notify:
     - systemd daemon-reload
-    - restart jackett
+    - restart postgresql
