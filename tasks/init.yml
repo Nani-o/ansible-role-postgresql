@@ -7,7 +7,7 @@
 - block:
     - name: Create the datadir
       file:
-        path: "{{ postgresql_datadir }}
+        path: "{{ postgresql_datadir }}"
         owner: "{{ postgresql_user }}"
         group: "{{ postgresql_group }}"
         recurse: yes
