@@ -1,4 +1,9 @@
 ---
+postgresql_version: 10
+postgresql_user: postgres
+postgresql_group: postgres
+
+
 postgresql_apt_repo: "deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main {{ postgresql_version }}"
 postgresql_apt_keyserver: "https://www.postgresql.org/media/keys/"
 postgresql_apt_key_id: "ACCC4CF8"

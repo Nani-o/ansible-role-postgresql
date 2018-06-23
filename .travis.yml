@@ -7,7 +7,7 @@ sudo: true
 
 env:
   global:
-    - containers: pg-distrib,pg-93,pg-10
+    - containers: pg-93,pg-10
   matrix:
     - test_os: centos7
     - test_os: centos6
