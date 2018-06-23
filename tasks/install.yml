@@ -9,3 +9,11 @@
     state: latest
   notify:
     - restart postgresql
+
+- name: Setup systemd service unit file
+  template:
+    src: postgresql.service.j2
+    dest: "{{ postgresql_systemd_file }}"
+  notify:
+    - systemd daemon-reload
+    - restart jackett
