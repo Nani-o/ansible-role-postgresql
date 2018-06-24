@@ -8,11 +8,18 @@ Documentation=man:postgres(1)
 Type=notify
 User={{ postgresql_user }}
 Group={{ postgresql_group }}
+TimeoutSec=0
+
+{% if postgresql_version | version_compare('10', '>=') %}
 ExecStart={{ postgresql_postgres_command }} -D {{ postgresql_datadir }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=mixed
 KillSignal=SIGINT
-TimeoutSec=0
+{% else %}
+ExecStart={{ postgresql_pg_ctl_command }} -s -D {{ postgresql_datadir }} start -w -t ${TimeoutSec}
+ExecReload={{ postgresql_pg_ctl_command }} -s -D {{ postgresql_datadir }} reload
+ExecStop={{ postgresql_pg_ctl_command }} -s -D {{ postgresql_datadir }} -m fast
+{% endif %}
 
 [Install]
 WantedBy=multi-user.target
