@@ -1,2 +1,2 @@
 ---
-postgresql_package: "postgresql{{ postgresql_version_short }}"
+postgresql_package: "postgresql-{{ postgresql_version_short }}"
