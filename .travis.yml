@@ -14,7 +14,6 @@ env:
       debug: true
     - test_os: ubuntu14.04
     - test_os: debian9
-    - test_os: debian8
 
 install:
   # Cloning testing template
